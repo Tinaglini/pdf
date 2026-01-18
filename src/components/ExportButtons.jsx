@@ -3,7 +3,7 @@ import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 import './ExportButtons.css';
 
-const ExportButtons = ({ disabled }) => {
+const ExportButtons = ({ disabled, products, activeBrand }) => {
   const [exporting, setExporting] = useState(false);
 
   const exportToPNG = async () => {
