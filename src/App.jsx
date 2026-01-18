@@ -43,24 +43,17 @@ const INITIAL_PRODUCTS = [
 ];
 
 function App() {
-  const [products, setProducts] = useState([]);
-  const [config, setConfig] = useState(DEFAULT_CONFIG);
+  const [products, setProducts] = useState(() => {
+    const saved = localStorage.getItem('perfume-catalog-products');
+    return saved ? JSON.parse(saved) : INITIAL_PRODUCTS;
+  });
+
+  const [config, setConfig] = useState(() => {
+    const saved = localStorage.getItem('perfume-catalog-config');
+    return saved ? JSON.parse(saved) : DEFAULT_CONFIG;
+  });
+
   const [showConfigModal, setShowConfigModal] = useState(false);
-
-  useEffect(() => {
-    const savedProducts = localStorage.getItem('perfume-catalog-products');
-    const savedConfig = localStorage.getItem('perfume-catalog-config');
-
-    if (savedProducts) {
-      setProducts(JSON.parse(savedProducts));
-    } else {
-      setProducts(INITIAL_PRODUCTS);
-    }
-
-    if (savedConfig) {
-      setConfig(JSON.parse(savedConfig));
-    }
-  }, []);
 
   useEffect(() => {
     localStorage.setItem('perfume-catalog-products', JSON.stringify(products));
