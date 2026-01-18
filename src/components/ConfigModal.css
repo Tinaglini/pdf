@@ -93,6 +93,7 @@
 .radio-group {
   display: flex;
   gap: 12px;
+  flex-wrap: wrap;
 }
 
 .radio-label {
