@@ -121,6 +121,8 @@ function App() {
             disabled={products.length === 0}
             products={products}
             activeBrand={activeBrand}
+            config={config}
+            onBrandChange={setActiveBrand}
           />
         </div>
       </div>
