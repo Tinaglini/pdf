@@ -54,6 +54,7 @@ function App() {
   });
 
   const [showConfigModal, setShowConfigModal] = useState(false);
+  const [activeBrand, setActiveBrand] = useState(null);
 
   useEffect(() => {
     localStorage.setItem('perfume-catalog-products', JSON.stringify(products));
@@ -109,9 +110,18 @@ function App() {
             <p>Visualização em tempo real de como ficará o catálogo</p>
           </div>
           <div className="preview-container">
-            <CatalogPreview products={products} config={config} />
+            <CatalogPreview
+              products={products}
+              config={config}
+              activeBrand={activeBrand}
+              onBrandChange={setActiveBrand}
+            />
           </div>
-          <ExportButtons disabled={products.length === 0} />
+          <ExportButtons
+            disabled={products.length === 0}
+            products={products}
+            activeBrand={activeBrand}
+          />
         </div>
       </div>
 

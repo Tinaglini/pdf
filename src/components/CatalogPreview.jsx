@@ -1,7 +1,8 @@
 import React from 'react';
 import './CatalogPreview.css';
+import BrandTabs from './BrandTabs';
 
-const CatalogPreview = ({ products, config }) => {
+const CatalogPreview = ({ products, config, activeBrand, onBrandChange }) => {
   if (products.length === 0) {
     return (
       <div className="catalog-preview" id="catalog-preview">
@@ -14,6 +15,23 @@ const CatalogPreview = ({ products, config }) => {
       </div>
     );
   }
+
+  // Agrupar produtos por marca
+  const brandGroups = products.reduce((acc, product) => {
+    if (!acc[product.marca]) {
+      acc[product.marca] = [];
+    }
+    acc[product.marca].push(product);
+    return acc;
+  }, {});
+
+  const brands = Object.keys(brandGroups).map(name => ({
+    name,
+    count: brandGroups[name].length
+  })).sort((a, b) => a.name.localeCompare(b.name));
+
+  // Filtrar produtos pela marca ativa
+  const filteredProducts = activeBrand ? brandGroups[activeBrand] || [] : products;
 
   const renderProduct = (product) => {
     if (config.layout === 'list') {
@@ -68,13 +86,19 @@ const CatalogPreview = ({ products, config }) => {
         <p className="catalog-subtitle">{config.storeName}</p>
       </div>
 
+      <BrandTabs
+        brands={brands}
+        activeBrand={activeBrand}
+        onBrandChange={onBrandChange}
+      />
+
       {config.layout === 'grid' ? (
         <div className={'catalog-products-grid cols-' + config.columns}>
-          {products.map(renderProduct)}
+          {filteredProducts.map(renderProduct)}
         </div>
       ) : (
         <div className="catalog-products-list">
-          {products.map(renderProduct)}
+          {filteredProducts.map(renderProduct)}
         </div>
       )}
 

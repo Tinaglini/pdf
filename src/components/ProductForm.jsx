@@ -1,10 +1,25 @@
 import React, { useState } from 'react';
 import './ProductForm.css';
 
-const ProductForm = ({ onAddProduct }) => {
+const MARCAS_PADRAO = [
+  'Nishane',
+  'Dior',
+  'Chanel',
+  'Paco Rabanne',
+  'Carolina Herrera',
+  'Ralph Lauren',
+  'Tom Ford',
+  'Armani',
+  'Versace',
+  'Dolce & Gabbana',
+  'Outra'
+];
+
+const ProductForm = ({ onAddProduct, brands }) => {
   const [formData, setFormData] = useState({
     nome: '',
     marca: '',
+    marcaCustom: '',
     preco: '',
     categoria: 'Masculino',
     foto: ''
@@ -28,14 +43,21 @@ const ProductForm = ({ onAddProduct }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (formData.nome && formData.marca && formData.preco) {
+    const marcaFinal = formData.marca === 'Outra' ? formData.marcaCustom : formData.marca;
+
+    if (formData.nome && marcaFinal && formData.preco) {
       onAddProduct({
-        ...formData,
+        nome: formData.nome,
+        marca: marcaFinal,
+        preco: formData.preco,
+        categoria: formData.categoria,
+        foto: formData.foto,
         id: Date.now()
       });
       setFormData({
         nome: '',
         marca: '',
+        marcaCustom: '',
         preco: '',
         categoria: 'Masculino',
         foto: ''
@@ -79,15 +101,27 @@ const ProductForm = ({ onAddProduct }) => {
 
         <div className="form-group">
           <label>Marca</label>
-          <input
-            type="text"
-            name="marca"
-            value={formData.marca}
-            onChange={handleChange}
-            placeholder="Ex: Ralph Lauren"
-            required
-          />
+          <select name="marca" value={formData.marca} onChange={handleChange} required>
+            <option value="">Selecione uma marca</option>
+            {MARCAS_PADRAO.map(marca => (
+              <option key={marca} value={marca}>{marca}</option>
+            ))}
+          </select>
         </div>
+
+        {formData.marca === 'Outra' && (
+          <div className="form-group">
+            <label>Nome da Marca</label>
+            <input
+              type="text"
+              name="marcaCustom"
+              value={formData.marcaCustom}
+              onChange={handleChange}
+              placeholder="Digite o nome da marca"
+              required
+            />
+          </div>
+        )}
 
         <div className="form-group">
           <label>Preço</label>
