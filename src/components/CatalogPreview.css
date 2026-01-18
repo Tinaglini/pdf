@@ -90,48 +90,49 @@
 }
 
 .catalog-product-details {
-  padding: 18px;
+  padding: 20px;
   background: #fafafa;
+  text-align: center;
 }
 
 .catalog-product-name {
   font-size: 15px;
-  font-weight: 700;
+  font-weight: 600;
   color: #000;
-  margin: 0 0 6px 0;
-  line-height: 1.3;
+  margin: 0 0 4px 0;
+  line-height: 1.4;
 }
 
 .catalog-product-brand {
-  font-size: 13px;
-  color: #666;
-  margin: 0 0 12px 0;
-  font-weight: 500;
+  font-size: 12px;
+  color: #888;
+  margin: 0 0 16px 0;
+  font-weight: 400;
 }
 
 .catalog-product-footer {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
-  margin-top: 8px;
+  gap: 10px;
 }
 
 .catalog-product-price {
-  font-size: 18px;
-  font-weight: 800;
+  font-size: 22px;
+  font-weight: 700;
   color: #000;
 }
 
 .catalog-product-badge {
-  padding: 4px 12px;
-  border-radius: 4px;
-  font-size: 11px;
+  padding: 3px 10px;
+  border-radius: 12px;
+  font-size: 9px;
   font-weight: 600;
   color: #555;
   background: #e8e8e8;
   border: 1px solid #d0d0d0;
   text-transform: uppercase;
-  letter-spacing: 0.5px;
+  letter-spacing: 0.8px;
 }
 
 .catalog-product-badge.masculino {
