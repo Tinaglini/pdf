@@ -12,7 +12,7 @@ const DEFAULT_CONFIG = {
   whatsapp: '(45) 99999-0000',
   instagram: '@perfumariaelegancia',
   layout: 'grid',
-  columns: '1'
+  columns: '3'
 };
 
 const INITIAL_PRODUCTS = [
