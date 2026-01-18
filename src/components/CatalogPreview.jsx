@@ -64,7 +64,7 @@ const CatalogPreview = ({ products, config }) => {
   return (
     <div className="catalog-preview" id="catalog-preview">
       <div className="catalog-header">
-        <h1 className="catalog-title">🌸 {config.title}</h1>
+        <h1 className="catalog-title">{config.title}</h1>
         <p className="catalog-subtitle">{config.storeName}</p>
       </div>
 
@@ -83,13 +83,13 @@ const CatalogPreview = ({ products, config }) => {
         <div className="catalog-contact">
           {config.whatsapp && (
             <div className="catalog-contact-item">
-              <span>📱</span>
+              <span>WhatsApp:</span>
               <span>{config.whatsapp}</span>
             </div>
           )}
           {config.instagram && (
             <div className="catalog-contact-item">
-              <span>📷</span>
+              <span>Instagram:</span>
               <span>{config.instagram}</span>
             </div>
           )}

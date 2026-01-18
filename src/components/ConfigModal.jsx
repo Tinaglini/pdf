@@ -109,6 +109,16 @@ const ConfigModal = ({ isOpen, onClose, config, onSave }) => {
                     <input
                       type="radio"
                       name="columns"
+                      value="1"
+                      checked={formData.columns === '1'}
+                      onChange={handleChange}
+                    />
+                    <span>1 Coluna</span>
+                  </label>
+                  <label className="radio-label">
+                    <input
+                      type="radio"
+                      name="columns"
                       value="2"
                       checked={formData.columns === '2'}
                       onChange={handleChange}

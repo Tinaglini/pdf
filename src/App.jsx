@@ -7,12 +7,12 @@ import ConfigModal from './components/ConfigModal';
 import './App.css';
 
 const DEFAULT_CONFIG = {
-  title: 'Catálogo de Perfumes 2025',
+  title: 'CATÁLOGO DE PERFUMES 2025',
   storeName: 'Perfumaria Elegância',
   whatsapp: '(45) 99999-0000',
   instagram: '@perfumariaelegancia',
   layout: 'grid',
-  columns: '2'
+  columns: '1'
 };
 
 const INITIAL_PRODUCTS = [
